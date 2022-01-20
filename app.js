@@ -22,9 +22,9 @@ const leaveAnimation = (current, done) => {
 
   return (
     tlLeave.fromTo(arrow, { y: 0, opacity: 1 }, { y: 50, opacity: 0 }),
+    tlLeave.fromTo(circles, { y:0, opacity: 1 }, { y: -200, opacity: 0, stagger: .15, ease: 'back.out(1.7)', duration: 1 }, '<'),
     tlLeave.fromTo(product, { y: 0, opacity: 1 }, { y: 100, opacity: 0 }, '<'),
-    tlLeave.fromTo(text, { y: 0, opacity: 1 }, { y: 100, opacity: 0 }, '<'),
-    tlLeave.fromTo(circles, { y:0, opacity: 1 }, { y: -200, opacity: 0, stagger: .15, ease: 'back.out(1.7)', duration: 1, onComplete: done }, '<')
+    tlLeave.fromTo(text, { y: 0, opacity: 1 }, { y: 100, opacity: 0, onComplete: done }, '<')
   )
 }
 
@@ -36,9 +36,9 @@ const enterAnimation = (next, done, gradient) => {
 
   return (
     tlEnter.fromTo(arrow, { y: -50, opacity: 0 }, { y: 0, opacity: 1 }),
-    tlEnter.fromTo(product, { y: -100, opacity: 0 }, { y: 0, opacity: 1, onComplete: done }, '<'),
-    tlEnter.fromTo(text, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '<'),
     tlEnter.fromTo(circles, { y: 200, opacity: 0 }, { y: 0, opacity: 1, stagger: .15, ease: 'back.out(1.7)', duration: 1 }, '<'),
+    tlEnter.fromTo(text, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '<'),
+    tlEnter.fromTo(product, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '<'),
     tlEnter.to('body', { background: gradient, onComplete: done }, '<')
   )
 }
